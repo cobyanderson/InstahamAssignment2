@@ -47,6 +47,24 @@ class Fire {
     });
   };
 
+  addCommment = async ({id, comment}) => {
+
+    var ref = firebase.firestore().collection('snack-SJucFknGX').doc(id)
+    var transaction = firebase.firestore().runTransaction(t => {
+      return t.get(ref)
+        .then(doc => {
+          var new_comments = doc.data().comments;
+          console.log(new_comments);
+          new_comments.push(comment);
+          t.update(ref, {comments: new_comments});
+        });
+    }).then(result => {
+      console.log('Comment Transaction success!');
+    }).catch(err => {
+      console.log('Comment sTransaction failure:', err);
+    });
+  };
+
   // Download Data
   getPaged = async ({ size, start }) => {
     let ref = this.collection.orderBy('timestamp', 'desc').limit(size);
@@ -97,6 +115,7 @@ class Fire {
       this.collection.add({
         text,
         liked: false,
+        comments: [],
         uid: this.uid,
         timestamp: this.timestamp,
         imageWidth: width,

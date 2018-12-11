@@ -19,7 +19,7 @@ export default class Item extends React.Component {
 
 
   render() {
-    var { text, liked, name, imageWidth, imageHeight, uid, image } = this.props;
+    var { text, comments, liked, name, imageWidth, imageHeight, uid, image } = this.props;
 
     // Reduce the name to something
     const imgW = imageWidth || this.state.width;
@@ -54,6 +54,7 @@ const Metadata = ({ name, description, heart }) => (
     <IconBar heart={heart} />
     <Text style={styles.text}>{name}</Text>
     <Text style={styles.subtitle}>{description}</Text>
+    <Text style={styles.subtitle}>Comment</Text>
   </View>
 );
 

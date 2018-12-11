@@ -8,6 +8,7 @@ import tabBarIcon from './utils/tabBarIcon';
 // Import the screens
 import FeedScreen from './screens/FeedScreen';
 import NewPostScreen from './screens/NewPostScreen';
+import NewCommentScreen from './screens/NewCommentScreen';
 import SelectPhotoScreen from './screens/SelectPhotoScreen';
 
 // Create our main tab navigator for moving between the Feed and Photo screens
@@ -50,6 +51,7 @@ const stackNavigator = createStackNavigator(
     },
     // This screen will not have a tab bar
     NewPost: NewPostScreen,
+    NewComment: NewCommentScreen,
   },
   {
     cardStyle: { backgroundColor: 'white' },
